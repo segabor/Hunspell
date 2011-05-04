@@ -1,0 +1,8 @@
+- Hunspell tested only with utf8 encoded dictionaries. No idea what will be
+  happening if I use dictionary having other encoding like ISO-8859-2.
+
+- Native binding actually uses the C API of hunspell library which provides a
+  very basic set of functions. Basically it is enough for my original purposes
+  but likely to change to the much richer C++ API.
+
+- rdoc
