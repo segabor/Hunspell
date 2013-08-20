@@ -18,9 +18,9 @@ REQUIREMENTS
 
 Before install Hunspell be sure to have the following components:
 
-- Ruby 1.8.x
+- Ruby >= 1.8
 - rubygems
-- hunspell 1.1.x (libhunspell-1.1)
+- hunspell >= 1.2.x (libhunspell-1.2)
     http://hunspell.sourceforge.net
 - dictionary files for Hunspell
     http://wiki.services.openoffice.org/wiki/Dictionaries
@@ -32,7 +32,6 @@ INSTALLATION
 The best way is to use gem package manager.
 
 	gem install hunspell
-
 
 If you want to build Hunspell from scratch grab the source and issue the
 following commands:
@@ -90,7 +89,7 @@ FEEDBACK
 --------
 
 Any help or report warmly appreciated. Please visit the project's homepage at
-http://hunspell.rubyforge.org or write me to segabor@gmail.com
+https://github.com/segabor/Hunspell or write me to segabor@gmail.com
 
 
 DISCLAIMER

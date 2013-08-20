@@ -1,28 +1,10 @@
 require 'mkmf'
 
-prefix_list = %w(/usr/local /opt/local)
+# Min version
+HUNSPELL_VER='1.2'
 
-if with_config('prefix')
-	prefix_list << with_config('prefix')
-end
+find_library("hunspell-#{HUNSPELL_VER}", 'Hunspell_create')
 
-# try to find hunspell lib
-good_prefix = '/usr/local'
-prefix_list.each do |prefix|
-	if find_library('hunspell-1.1', 'Hunspell_create', prefix + "/lib")
-		good_prefix = prefix
-		break
-	end
-end
-
-# workaround for FreeBSD where hunspell package does not deploy header files
-# you can add include dir explicitly
-inc_dir = if with_config("include-dir")
-	with_config("include-dir")
-else
-	good_prefix+"/include"
-end
-
-dir_config("Hunspell" , inc_dir, good_prefix+"/lib")
+# dir_config("Hunspell" , inc_dir, good_prefix+"/lib")
 
 create_makefile("Hunspell")

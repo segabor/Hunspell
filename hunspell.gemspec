@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
 	s.name = 'hunspell'
-	s.version = '0.1.1'
-	s.date = '2007-09-06'
+	s.version = '0.1.2'
+	s.date = '2013-08-20'
 	s.summary = 'Ruby interface to hunspell spell checker'
 	s.email = 'segabor@gmail.com'
-	s.homepage = 'http://hunspell.rubyforge.org'
+	s.homepage = 'https://github.com/segabor/Hunspell'
 	s.description = <<__TEXT
 Hunspell is an easy native Ruby interface to the famous Hunspell spell checker
 library which is part of OpenOffice and Mozilla products. With this bundle
@@ -15,6 +15,6 @@ __TEXT
 	s.authors = ['Gábor SEBESTYÉN']
 	s.files = %w(extconf.rb hunspell.c hunspell.rb TODO README example.rb LGPL_LICENSE)
 	s.extensions = ["extconf.rb"]
-	s.requirements = ["hunspell 1.1.11 or later"]
+	s.requirements = ["hunspell 1.3 or newer"]
 	s.require_paths = ["lib", "."]
 end
