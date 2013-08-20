@@ -146,8 +146,6 @@ static VALUE mHunspellSuggest(VALUE self, VALUE str) {
  *
  */
 static VALUE mHunspellEncoding(VALUE self) {
-	int result;
-	
 	Hunhandle **ptr;
 	Data_Get_Struct(self, Hunhandle *, ptr);
 
