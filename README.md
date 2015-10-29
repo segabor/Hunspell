@@ -22,6 +22,10 @@ The best way to get Hunspell is to use gem package manager
 
 	gem install hunspell
 
+NOTE: if install fails on newer OSX versions, try this command
+
+	sudo ARCHFLAGS="-arch x86_64" gem install hunspell
+
 If you want to build Hunspell from scratch grab the source from [here](https://github.com/segabor/Hunspell) and execute the
 following command
 
