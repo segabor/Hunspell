@@ -13,7 +13,7 @@ Ruby on Rails.
 __TEXT
 	s.has_rdoc = false
 	s.authors = ['Gábor SEBESTYÉN']
-	s.files = %w(extconf.rb hunspell.c hunspell.rb TODO README example.rb LGPL_LICENSE)
+	s.files = %w(extconf.rb hunspell.c hunspell.rb TODO README.md example.rb LGPL_LICENSE)
 	s.extensions = ["extconf.rb"]
 	s.requirements = ["hunspell 1.3 or newer"]
 	s.require_paths = ["lib", "."]
