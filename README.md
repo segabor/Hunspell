@@ -13,7 +13,7 @@ Before installing Hunspell ensure you have the following components already inst
 
 - Ruby >= 1.8
 - rubygems
-- hunspell native library >= 1.2.x (libhunspell-1.2)
+- hunspell native library >= 1.3 (libhunspell-1.3)
 - dictionary files: download from [LibreOffice](http://cgit.freedesktop.org/libreoffice/dictionaries/tree/) or [OpenOffice](http://wiki.services.openoffice.org/wiki/Dictionaries) websites.
 
 ## INSTALLATION
