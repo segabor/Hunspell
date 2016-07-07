@@ -25,6 +25,26 @@
 #include "ruby.h"
 #include "hunspell/hunspell.h"
 
+#ifdef HAVE_RUBY_ENCODING_H
+
+#include <ruby/encoding.h>
+
+#define ENCODED_STR_NEW2(str, encoding) \
+	  ({ \
+	    VALUE _string = rb_str_new2((const char *)str); \
+	    int _enc = rb_enc_find_index(encoding); \
+	    if (_enc != -1) { \
+	      rb_enc_associate_index(_string, _enc); \
+	    } \
+	    _string; \
+	  })
+
+#else
+
+#define ENCODED_STR_NEW2(str, encoding) \
+  rb_str_new2((const char *)str)
+
+#endif
 
 
 /*
@@ -116,11 +136,13 @@ static VALUE mHunspellSuggest(VALUE self, VALUE str) {
 
 	n = Hunspell_suggest(*ptr, &lst, (const char *)StringValueCStr(str));
 	if (n > 0) {
+		const char *enc = Hunspell_get_dic_encoding(*ptr);
+
 		// allocate enough space in new array
 		ret = rb_ary_new2(n);
 		for (i=0; i<n; i++) {
 			// add string to list
-			VALUE rb_str = rb_str_new2(lst[i]);
+			VALUE rb_str = ENCODED_STR_NEW2(lst[i], enc);
 			rb_ary_push(ret, rb_str);
 		}
 	} else {
@@ -153,7 +175,7 @@ static VALUE mHunspellEncoding(VALUE self) {
 #ifdef DEBUG
 	printf("DEBUG: mHunspellEncoding: %s\n", enc);
 #endif
-	return rb_str_new2(enc);
+	return ENCODED_STR_NEW2(enc, "UTF-8");
 }
 
 
