@@ -1,7 +1,7 @@
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
-  t.libs << 'test'
+  t.libs << '.' << 'test'
 end
 
 desc "Run tests"
