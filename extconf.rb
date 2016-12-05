@@ -19,13 +19,22 @@ LIB_DIRS = [
   '/usr/lib'
 ]
 
+HUNSPELL_TEST_HEADERS = ['hunspell/hunspell.h']
+HUNSPELL_TEST_FUNCTION = 'Hunspell_create'
 
-dir_config('hunspell-1.3', HEADER_DIRS, LIB_DIRS)
+# Hunspell libraries to test for, in order of precedence
+HUNSPELL_LIBRARIES = ['hunspell-1.5', 'hunspell-1.4', 'hunspell-1.3']
 
-if have_library('hunspell-1.3', 'Hunspell_create', ['hunspell/hunspell.h'])
+HUNSPELL_LIBRARIES.each do |library|
+  dir_config(library, HEADER_DIRS, LIB_DIRS)
+end
+
+# Link with first matching library
+if HUNSPELL_LIBRARIES.any? { |library| have_library(library, HUNSPELL_TEST_FUNCTION, HUNSPELL_TEST_HEADERS) }
 then
   create_makefile('Hunspell')
 else
-  puts('Missing hunspell library')
+  STDERR.puts('Missing hunspell library')
+  STDERR.puts('Supported versions: ' + HUNSPELL_LIBRARIES.join(' '))
 end
 
