@@ -9,4 +9,3 @@ before_script:
 
 rvm:
   - 2.3.3
-  - ruby-head
