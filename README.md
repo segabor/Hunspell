@@ -1,4 +1,4 @@
-# Hunspell [![Build Status](https://travis-ci.org/segabor/Hunspell.svg?branch=master)](https://travis-ci.org/segabor/Hunspell)
+# Hunspell [![Gem Version](https://badge.fury.io/rb/hunspell.svg)](https://badge.fury.io/rb/hunspell) [![Build Status](https://travis-ci.org/segabor/Hunspell.svg?branch=master)](https://travis-ci.org/segabor/Hunspell)
 
 Ruby interface to hunspell spell checker
 Copyright 2007, Gabor SEBESTYEN
