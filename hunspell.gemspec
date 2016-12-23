@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 	s.summary = 'Ruby interface to hunspell spell checker'
 	s.email = 'segabor@gmail.com'
 	s.homepage = 'https://github.com/segabor/Hunspell'
-  s.licence = 'LGPL-3.0'
+  s.license = 'LGPL-3.0'
 	s.description = <<__TEXT
 Hunspell is an easy native Ruby interface to the famous Hunspell spell checker
 library which is part of OpenOffice and Mozilla products. With this bundle
