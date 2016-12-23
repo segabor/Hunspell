@@ -19,28 +19,28 @@ Before installing Hunspell ensure you have the following components already inst
 ## INSTALLATION
 
 The best way to get Hunspell is to use gem package manager
-
-	gem install hunspell
-
+```sh
+gem install hunspell
+```
 NOTE: if install fails on newer OSX versions, try this command
-
-	sudo ARCHFLAGS="-arch x86_64" gem install hunspell
-
+```sh
+sudo ARCHFLAGS="-arch x86_64" gem install hunspell
+```
 If you want to build Hunspell from scratch grab the source from [here](https://github.com/segabor/Hunspell) and execute the
 following command
-
-	ruby extconf.rb && make
-
+```sh
+ruby extconf.rb && make
+```
 
 FreeBSD gotcha: hunspell spell checker package does not deploy its header
 files. Run gem or ruby command with an extra option:
-
-	gem install hunspell -- --with-include-dir=<incdir>
-
+```sh
+gem install hunspell -- --with-include-dir=<incdir>
+```
 or
-
-	ruby extconf.rb --with-include-dir=<incdir> && make
-	
+```sh
+ruby extconf.rb --with-include-dir=<incdir> && make
+```	
 Replace _incdir_ with the path pointing to hunspell includes.
 
 ## FIRST STEPS
@@ -49,7 +49,7 @@ Here's a basic example how to use Hunspell. Cut it and run in ruby.
 
 ### example.rb
 
-```
+```rb
 require "rubygems" # import gem package manager
 gem "hunspell"     # load Hunspell module
 require "Hunspell" # inject Hunspell class to Ruby namespace
