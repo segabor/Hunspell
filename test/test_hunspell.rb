@@ -3,7 +3,7 @@ require "Hunspell"
 
 class HunspellTest < Test::Unit::TestCase
   def setup
-    @sp = Hunspell.new("test/dict/hu_HU.aff", "test/dict/hu_HU.dic") 
+    @sp = Hunspell.new("test/dict/hu_HU.aff", "test/dict/hu_HU.dic")
   end
 
   def test_spellcheck
@@ -21,5 +21,8 @@ class HunspellTest < Test::Unit::TestCase
     assert !suggestions.include?('paprica')
     assert suggestions.include?('paprika')
   end
-end
 
+  def test_analyze
+    assert @sp.analyze('paprika') == [" st:paprika po:noun ts:NOM"]
+  end
+end

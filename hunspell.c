@@ -75,7 +75,7 @@ static VALUE mHunspellInitialize(VALUE self, VALUE affPath, VALUE dictPath) {
 
 	Hunhandle **ptr;
 	Data_Get_Struct(self, Hunhandle *, ptr);
-	
+
 	if (!handler) {
 		// crash!
 		rb_raise(rb_eRuntimeError, "Failed to initialize Hunspell.");
@@ -103,7 +103,7 @@ static VALUE mHunspellInitialize(VALUE self, VALUE affPath, VALUE dictPath) {
  */
 static VALUE mHunspellSpell(VALUE self, VALUE str) {
 	int result;
-	
+
 	Hunhandle **ptr;
 	Data_Get_Struct(self, Hunhandle *, ptr);
 
@@ -130,11 +130,54 @@ static VALUE mHunspellSuggest(VALUE self, VALUE str) {
 	int n, i;
 	char **lst;
 	VALUE ret;
-	
+
 	Hunhandle **ptr;
 	Data_Get_Struct(self, Hunhandle *, ptr);
 
 	n = Hunspell_suggest(*ptr, &lst, (const char *)StringValueCStr(str));
+	if (n > 0) {
+		const char *enc = Hunspell_get_dic_encoding(*ptr);
+
+		// allocate enough space in new array
+		ret = rb_ary_new2(n);
+		for (i=0; i<n; i++) {
+			// add string to list
+			VALUE rb_str = ENCODED_STR_NEW2(lst[i], enc);
+			rb_ary_push(ret, rb_str);
+		}
+	} else {
+		// create empty array
+		ret = rb_ary_new();
+	}
+
+#ifdef DEBUG
+	printf("mHunspellSuggest %s -> %d\n", StringValueCStr(str), n);
+#endif
+
+	return ret;
+}
+
+
+
+/*
+ * Get Morphological analysis of the word
+ *
+ * Input: word (String)
+ * Output: list of analysis results (Array of Strings)
+ *
+ * Example:
+ *   sp.analyze("paprika") => [' st:paprika po:noun ts:NOM']
+ *
+ */
+static VALUE mHunspellAnalyze(VALUE self, VALUE str) {
+	int n, i;
+	char **lst;
+	VALUE ret;
+
+	Hunhandle **ptr;
+	Data_Get_Struct(self, Hunhandle *, ptr);
+
+	n = Hunspell_analyze(*ptr, &lst, (const char *)StringValueCStr(str));
 	if (n > 0) {
 		const char *enc = Hunspell_get_dic_encoding(*ptr);
 
@@ -184,16 +227,17 @@ static VALUE mHunspellEncoding(VALUE self) {
  */
 void Init_Hunspell() {
 	VALUE	rb_cHunspell;
-	
+
 	// create Hunspell class
 	rb_cHunspell = rb_define_class("Hunspell", rb_cObject);
 
 	// register own allocator
 	rb_define_alloc_func(rb_cHunspell, cHunspellAllocate);
-	
+
 	// register instance methods
 	rb_define_method(rb_cHunspell, "initialize", mHunspellInitialize, 2);
 	rb_define_method(rb_cHunspell, "spellcheck", mHunspellSpell, 1);
 	rb_define_method(rb_cHunspell, "suggest", mHunspellSuggest, 1);
+	rb_define_method(rb_cHunspell, "analyze", mHunspellAnalyze, 1);
 	rb_define_method(rb_cHunspell, "encoding", mHunspellEncoding, 0);
 }
