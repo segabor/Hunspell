@@ -77,7 +77,3 @@ puts "Suggestions for 'paprica': " + sp.suggest("paprica").inspect
 ## FEEDBACK
 
 Any help or report are warmly appreciated. Please visit the project's homepage at https://github.com/segabor/Hunspell and open an issue.
-
-## DISCLAIMER
-
-This software is at an early stage. Use at own your risk! No warranty.
