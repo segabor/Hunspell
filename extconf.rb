@@ -23,7 +23,7 @@ HUNSPELL_TEST_HEADERS = ['hunspell/hunspell.h']
 HUNSPELL_TEST_FUNCTION = 'Hunspell_create'
 
 # Hunspell libraries to test for, in order of precedence
-HUNSPELL_LIBRARIES = %w(1.6 1.5 1.4 1.3).map {|ver| "hunspell-#{ver}"}
+HUNSPELL_LIBRARIES = %w(1.7 1.6 1.5 1.4 1.3).map {|ver| "hunspell-#{ver}"}
 
 HUNSPELL_LIBRARIES.each do |library|
   dir_config(library, HEADER_DIRS, LIB_DIRS)
