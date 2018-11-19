@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 	s.name = 'hunspell'
-	s.version = '1.0.0'
-	s.date = '2017-09-06'
+	s.version = '1.1.0'
+	s.date = '2018-11-19'
 	s.summary = 'Ruby interface to hunspell spell checker'
 	s.email = 'segabor@gmail.com'
 	s.homepage = 'https://github.com/segabor/Hunspell'
