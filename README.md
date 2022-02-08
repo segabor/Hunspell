@@ -32,7 +32,22 @@ following command
 ruby extconf.rb && make
 ```
 
-FreeBSD gotcha: hunspell spell checker package does not deploy its header
+### Mac Homebrew
+Homebrew may install hunspell into an unexpected location, particularly on M1 Apple Silicon.
+
+With gem package manager:
+```sh
+gem install hunspell -- --with-hunspell-1.7-dir=/opt/homebrew/opt/hunspell
+```
+
+With bundler:
+```sh
+bundle config build.hunspell --with-hunspell-1.7-dir=/opt/homebrew/opt/hunspell
+bundle install
+```
+
+### FreeBSD
+hunspell spell checker package does not deploy its header
 files. Run gem or ruby command with an extra option:
 ```sh
 gem install hunspell -- --with-include-dir=<incdir>
