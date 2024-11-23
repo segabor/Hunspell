@@ -5,6 +5,7 @@ INCLUDEDIR  = RbConfig::CONFIG['includedir']
 
 HEADER_DIRS = [
   '/usr/local/include',
+  '/opt/homebrew/include/',
 
   INCLUDEDIR,
 
@@ -13,6 +14,7 @@ HEADER_DIRS = [
 
 LIB_DIRS = [
   '/usr/local/lib',
+  '/opt/homebrew/lib',
 
   LIBDIR,
 
