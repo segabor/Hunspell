@@ -16,7 +16,7 @@ __TEXT
 	s.authors = ['Gábor SEBESTYÉN']
 	s.files = %w(extconf.rb hunspell.c hunspell.rb README.md example.rb LGPL_LICENSE)
 	s.extensions = ["extconf.rb"]
-	s.requirements = ["hunspell 1.3 or newer"]
+	s.requirements = ["hunspell 1.7.2 or newer"]
 	s.require_paths = ["lib", "."]
 
 	s.test_files = Dir.glob('test/test_*.rb')
